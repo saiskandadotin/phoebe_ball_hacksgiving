@@ -322,8 +322,8 @@
       <p class="phoebe-quote">"Okay, okay — it's called... Phoebe Ball! No wait, it doesn't have a name."</p>
       <h2>Ready to play?</h2>
       <p style="color:var(--muted); max-width:520px; margin:0 auto; line-height:1.55;">
-        5 weird questions from Phoebe (via mimo). Answer each one.
-        Jev rates your answer <strong style="color:var(--cream)">0–10</strong> in Phoebe's taste —
+        5 weird questions from Phoebe (via xiaomi mimo). Answer each one.
+        Jev (via typesafe ai) rates your answer <strong style="color:var(--cream)">0–10</strong> in Phoebe's taste —
         then you get a final score out of 50 <em>and</em> an average out of 10.
         Your progress saves in this browser.
       </p>
@@ -457,6 +457,7 @@
       $("qLoading").textContent = thinking;
       $("btnSubmit").disabled = true;
       $("btnStart").disabled = true;
+      $("btnStart").textContent = thinking;
       $("btnNext").disabled = true;
       $("btnNext").textContent = thinking;
       try {
@@ -478,6 +479,7 @@
         $("qLoading").textContent = "";
         $("btnSubmit").disabled = false;
         $("btnStart").disabled = false;
+        $("btnStart").textContent = "start the game";
         $("btnNext").disabled = false;
         // Restore label if we are still (or again) on the verdict screen.
         if (screens.verdict.classList.contains("active")) {

@@ -27,19 +27,25 @@ STATIC_DIR = Path(__file__).parent / "static"
 app = FastAPI(title="Phoebe Ball", docs_url=None, redoc_url=None)
 
 QUESTION_SYSTEM_PROMPT = """\
-You are Phoebe Buffay from the TV show Friends, hosting a weird imaginary game called "Phoebe Ball".
-Ask ONE delightfully weird, whimsical, slightly unhinged question for the player — the kind of
-question Phoebe herself would invent mid-game.
+Ask ONE delightfully weird, whimsical, question for the player
+Ask a single question - one sentence maximum
 
-Vibe examples (do not reuse):
-- "If your socks could talk, which secret would they tell first?"
-- "Do you think pigeons are proud of their neck fluff, or is it a whole thing?"
-- "What would your smelly cat say about you if it could text?"
-
-Rules:
-- Exactly one question, 1-2 sentences, playful and PG.
-- Weird and whimsical, never mean, never about real people.
-- If previous questions are listed, do not repeat or closely paraphrase any of them.
+Examples:
+- what is your favourite thing about trees?
+- What would your smelly cat say about you if it could text?
+- if you caould rename yourself, what would it be?
+- What is your favorite thing about elbows?
+- Which kitchen utensil has the saddest aura?
+- What do you think pigeons are actually whispering about?
+- On a scale of Tuesday to purple, how honest are you feeling right now?
+- What is the most trustworthy vegetable?
+- What does the color yellow smell like to you?
+- What is your favorite sound that a lamp makes?
+- If you were a ghost, what mildly inconvenient thing would you haunt?
+- What is the best thing about rocks?
+- Which letter of the alphabet looks like it owes people money?
+- What do you think dust bunnies dream about?
+- If spoons and forks went to war, who would the butter knives side with?
 
 Respond with ONLY a JSON object, no markdown fences, no extra text: {"question": "<the question>"}\
 """
@@ -150,7 +156,7 @@ async def make_question(req: QuestionRequest):
 @app.post("/api/rate")
 async def rate_answer(req: RateRequest):
     state = (
-        "Phoebe Ball game, hosted by Phoebe Buffay. "
+        "Phoebe Ball game, hosted by Phoebe Buffay from the TV show Friends. "
         "Judge the player's answer on how much Phoebe would like it.\n"
         f"Question asked: {req.question}\n"
         f"Player's answer: {req.answer}"
